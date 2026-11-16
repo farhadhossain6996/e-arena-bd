@@ -1,11 +1,11 @@
-import React from 'react'
+import HeroSection from "@/components/home/HeroSection";
+import GameGrid from "@/components/home/GameGrid";
 
-const page = () => {
+export default function HomePage() {
   return (
-    <div className=''>
-      fffffffffffffff
+    <div>
+      <HeroSection />
+      <GameGrid />
     </div>
-  )
+  );
 }
-
-export default page
