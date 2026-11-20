@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import {
   Swords,
   Users,
@@ -10,6 +11,7 @@ import {
   Check,
   Trophy,
   ExternalLink,
+  ArrowLeft,
 } from "lucide-react";
 
 const INITIAL_MATCHES = [
@@ -55,6 +57,13 @@ const INITIAL_MATCHES = [
     status: "Challenge Sent",
     roomCode: "",
   },
+];
+
+const MATCH_RULES = [
+  "10 min halves off",
+  "Normal condition",
+  "No extra time",
+  "Screenshot proof",
 ];
 
 export default function MatchesPage() {
@@ -188,7 +197,49 @@ export default function MatchesPage() {
   });
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 bg-[#09090b] text-zinc-100">
+    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 bg-[#09090b] text-zinc-100">
+      {/* Top Arena Banner (image_4b64e9.jpg style) */}
+      <div className="relative mb-8 overflow-hidden rounded-2xl border border-zinc-800/90 bg-[#070b0a] px-6 py-6 sm:px-8 sm:py-7">
+        {/* Ambient emerald & stadium glow */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-12 -top-12 h-60 w-80 rounded-full bg-emerald-500/15 blur-3xl"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#070b0a] via-[#070b0a]/85 to-emerald-950/25"
+        />
+
+        <div className="relative z-10">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-400 hover:text-emerald-400 transition"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" />
+            <span>Back to hub</span>
+          </Link>
+
+          <p className="mt-3 text-[11px] font-bold tracking-[0.14em] text-emerald-400 uppercase">
+            CHALLENGE LOBBY
+          </p>
+
+          <h2 className="mt-1 text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+            eFootball<sup className="text-sm font-semibold ml-0.5">TM</sup> Mobile
+          </h2>
+
+          <div className="mt-4 flex flex-wrap items-center gap-2">
+            {MATCH_RULES.map((rule) => (
+              <span
+                key={rule}
+                className="rounded-md border border-zinc-800 bg-zinc-950/85 px-2.5 py-1 text-[11px] font-medium text-zinc-300"
+              >
+                {rule}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-zinc-800/80 pb-6 mb-6">
         <div>
